@@ -9,6 +9,12 @@ class RegisterPage extends Component {
     error: false,
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.regSucces) {
+      this.props.history.push('/thankyou');
+    }
+  }
+
   handlePasswordChange = event => {
     this.setState({
       password: event.target.value,
@@ -67,6 +73,7 @@ class RegisterPage extends Component {
 const mapStateToProps = store => ({
   userErrorMessage: store.userReducer.errMessage,
   hasError: store.userReducer.isError,
+  regSucces: store.userReducer.regSucces,
 });
 
 const mapDispatchToProps = {

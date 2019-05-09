@@ -4,6 +4,7 @@ import RegisterPage from './containers/RegisterPage';
 import Navbar from './containers/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import LoginPage from './containers/LoginPage';
+import ThankYouPage from './containers/ThankYouPage';
 
 
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
       <div className="container">
         <Route exact path='/' component={RegisterPage} />
         <Route path='/login' component={LoginPage} />
+        <Route path='/thankyou' component={ThankYouPage} />
       </div>
     </div>
   </Switch>
