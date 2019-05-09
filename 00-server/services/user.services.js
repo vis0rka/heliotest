@@ -15,7 +15,18 @@ const postUser = (username, password) => new Promise((fullfill, reject) => {
   });
 });
 
+const getUser = username => new Promise((fullfill, reject) => {
+  User.findOne({ username }, (error, user) => {
+    if (error) {
+      reject(error);
+    } else {
+      fullfill(user);
+    }
+  });
+});
+
 
 module.exports = {
   postUser,
+  getUser
 };
