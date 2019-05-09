@@ -42,6 +42,13 @@ const userReducer = (
         username: action.payload.username,
       }
     }
+    case 'USER_ERROR_MESSAGE_CLEAR': {
+      return {
+        ...state,
+        isError: false, 
+        iserrMessage: '', 
+      }
+    }
     default:
       return state
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendUserRegister } from '../actions/actions'
+import { sendUserRegister, clearErrorMessage } from '../actions/actions'
 
 class RegisterPage extends Component {
   state = {
@@ -36,13 +36,17 @@ class RegisterPage extends Component {
     }
   }
 
+  clearError = () => {
+    this.props.clearErrorMessage()
+  }
+
   render() {
     return (
       <form className="w-30 shadow m-2 p-3 border" onSubmit={this.handleSubmit}>
         <h3>Register</h3>
         <div className="form-group">
           <label htmlFor="username">Username</label>
-          <input type="text" className="form-control" id="username" name="username" placeholder="Enter your username" required />
+          <input type="text" className="form-control" id="username" name="username" placeholder="Enter your username" required onChange={this.clearError}/>
           {this.props.hasError ? <span className="text-danger">{this.props.userErrorMessage}</span> : null}
         </div>
         <div className="form-group">
@@ -67,6 +71,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = {
   sendUserRegister,
+  clearErrorMessage,
 };
 
 export default connect(
