@@ -15,6 +15,12 @@ class RegisterPage extends Component {
     this.props.clearErrorMessage()
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.UserIsLogdin) {
+      this.props.history.push('/mainpage');
+    }
+  }
+
   render() {
     return (
       <form className="w-30 shadow m-2 p-3 border" onSubmit={this.handleSubmit}>
@@ -38,6 +44,7 @@ class RegisterPage extends Component {
 const mapStateToProps = store => ({
   userErrorMessage: store.userReducer.errMessage,
   hasError: store.userReducer.isError,
+  UserIsLogdin: store.userReducer.isLogdin,
 });
 
 const mapDispatchToProps = {

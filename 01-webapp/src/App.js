@@ -5,6 +5,7 @@ import Navbar from './containers/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
 import LoginPage from './containers/LoginPage';
 import ThankYouPage from './containers/ThankYouPage';
+import MainPage from './containers/MainPage';
 
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path='/' component={RegisterPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/thankyou' component={ThankYouPage} />
+        <Route path='/mainpage' component={MainPage} />
       </div>
     </div>
   </Switch>

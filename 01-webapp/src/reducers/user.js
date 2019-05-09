@@ -23,6 +23,7 @@ const userReducer = (
       return {
         ...state, 
         isError: true,
+        isLogdin: false,
         errMessage: action.payload,
       }
     }
