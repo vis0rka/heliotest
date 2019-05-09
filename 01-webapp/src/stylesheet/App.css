@@ -13,3 +13,7 @@
 .navbar-nav button {
   margin-right:10px;
 }
+
+.homeButton {
+  cursor: pointer;
+}
