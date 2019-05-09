@@ -30,7 +30,7 @@ const registerUser = (req, res) => {
         if (error.code === 11000) {
           res.status(409).json({
             status: 'error',
-            error: 'Taken username, choose another one',
+            message: 'Taken username, choose another one',
           });
         } else {
           res.status(500).json(error);
@@ -44,16 +44,19 @@ const loginUser = (req, res) => {
   if (!username || !password) {
     res.status(400).json({
       status: 'error',
+      type: 'username password',
       message: 'Missing parameters: username, password!',
     });
   } else if (!password) {
     res.status(400).json({
       status: 'error',
+      type: 'password',
       message: 'Missing parameters: password!',
     });
   } else if (!username) {
     res.status(400).json({
       status: 'error',
+      type: 'username',
       message: 'Missing parameters: username!',
     });
   } else {
@@ -66,13 +69,15 @@ const loginUser = (req, res) => {
         } else {
           res.status(400).json({
             status: 'error',
+            type: 'password',
             message: 'Wrong password',
           });
         }
       })
       .catch(error => res.status(401).json({
         status: 'error',
-        message: `no such a user: ${username}`
+        type: 'username',
+        message: `no such a username: ${username}`
       }));
   }
 }
