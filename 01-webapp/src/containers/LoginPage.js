@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendUserLogin, clearErrorMessage } from '../actions/actions'
+import { sendUserLogin, clearErrorMessage, userLogout } from '../actions/actions'
 
 class RegisterPage extends Component {
+
+  componentDidMount = () => {
+    this.props.userLogout();
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -50,6 +54,7 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = {
   sendUserLogin,
   clearErrorMessage,
+  userLogout,
 };
 
 export default connect(

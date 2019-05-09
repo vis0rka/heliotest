@@ -17,3 +17,7 @@ export const sendUserLogin = (username, password) => ({
 export const clearErrorMessage = () => ({
   type: 'USER_ERROR_MESSAGE_CLEAR',
 })
+
+export const userLogout = () => ({
+  type: 'USER_LOGOUT',
+})

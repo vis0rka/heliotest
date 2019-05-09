@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
-
+import { userLogout } from '../actions/actions';
 
 class Navbar extends Component {
   handleClick = (event) => {
-    if(event.target.dataset.name === "login") {
-     this.props.history.push('/login'); 
+    if (event.target.dataset.name === "login") {
+      this.props.history.push('/login');
+    } else if (event.target.dataset.name === "logout") {
+
     } else {
-      this.props.history.push('/'); 
+      this.props.history.push('/');
     }
   }
 
@@ -21,8 +23,17 @@ class Navbar extends Component {
         </button>
         <div className="collapse navbar-collapse right" id="navbarNavAltMarkup" >
           <ul className="navbar-nav ml-auto w-100 justify-content-end">
-            <button className="nav-item nav-link btn btn-light shadow" data-name="login">Login</button>
-            <button className="nav-item nav-link btn btn-light shadow" data-name="register">Register</button>
+            {this.props.UserIsLogdin ?
+              <React.Fragment>
+                <button className="nav-item nav-link btn btn-light shadow" data-name="login">Logout</button>
+                <button className="nav-item nav-link btn btn-light shadow" data-name="register">Settings</button>
+              </React.Fragment>
+              :
+              <React.Fragment>
+                <button className="nav-item nav-link btn btn-light shadow" data-name="login">Login</button>
+                <button className="nav-item nav-link btn btn-light shadow" data-name="register">Register</button>
+              </React.Fragment>
+            }
           </ul>
         </div>
       </nav>
@@ -30,10 +41,11 @@ class Navbar extends Component {
   }
 }
 
-Navbar.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-}
+const mapStateToProps = store => ({
+  UserIsLogdin: store.userReducer.isLogdin,
+});
 
-export default withRouter(Navbar);
+
+export default withRouter(connect(
+  mapStateToProps,
+)(Navbar));

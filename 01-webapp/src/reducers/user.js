@@ -48,6 +48,16 @@ const userReducer = (
         iserrMessage: '', 
       }
     }
+    case 'USER_LOGOUT': {
+      return {
+        ...state,
+        isLogdin: false,
+        isError: false,
+        username: '',
+        iserrMessage: '', 
+        
+      }
+    }
     default:
       return state
   }
