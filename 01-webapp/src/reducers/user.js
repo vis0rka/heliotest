@@ -10,7 +10,6 @@ const userReducer = (
 ) => {
   switch (action.type) {
     case 'REGISTER_FAILED': {
-      console.log(action);
       return {
         ...state, 
         isError: true,
@@ -19,7 +18,6 @@ const userReducer = (
       }
     }
     case 'LOGIN_FAILED': {
-      console.log(action);
       return {
         ...state, 
         isError: true,

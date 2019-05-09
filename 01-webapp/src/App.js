@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RegisterPage from './containers/RegisterPage';
-import Navbar from './containers/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from './containers/Navbar';
+import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';
 import ThankYouPage from './containers/ThankYouPage';
 import MainPage from './containers/MainPage';

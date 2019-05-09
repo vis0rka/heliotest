@@ -4,7 +4,6 @@ import * as API from '../services/api';
 function* register(action) {
   try {
     const response = yield call(API.postData, action.payload, 'http://localhost:4000/register');
-    console.log(response)
     if (response.status === "error") {
       yield put({
         type: 'REGISTER_FAILED',
@@ -27,7 +26,6 @@ function* register(action) {
 function* login(action) {
   try {
     const response = yield call(API.postData, action.payload, 'http://localhost:4000/login');
-    console.log(response)
     if (response.status === "error") {
       yield put({
         type: 'LOGIN_FAILED',
