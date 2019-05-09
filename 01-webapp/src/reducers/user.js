@@ -18,11 +18,27 @@ const userReducer = (
         regSucces: false,
       }
     }
+    case 'LOGIN_FAILED': {
+      console.log(action);
+      return {
+        ...state, 
+        isError: true,
+        errMessage: action.payload,
+      }
+    }
     case 'USER_REG_SUCCEEDED': {
       return {
         ...state,
         isError: false, 
         regSucces: true, 
+        username: action.payload.username,
+      }
+    }
+    case 'USER_LOGIN_SUCCEEDED': {
+      return {
+        ...state,
+        isError: false, 
+        isLogdin: true, 
         username: action.payload.username,
       }
     }

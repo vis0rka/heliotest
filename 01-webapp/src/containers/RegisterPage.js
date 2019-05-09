@@ -32,7 +32,6 @@ class RegisterPage extends Component {
         error: true,
       })
     } else {
-      console.log('cuca');
       sendUserRegister(username.value, password);
     }
   }

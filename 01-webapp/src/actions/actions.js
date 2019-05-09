@@ -5,3 +5,11 @@ export const sendUserRegister = (username, password) => ({
     password
   }
 });
+
+export const sendUserLogin = (username, password) => ({
+  type: "USER_LOG_REQUESTED",
+  payload: {
+    username,
+    password
+  }
+});
